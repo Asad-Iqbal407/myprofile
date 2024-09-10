@@ -3,148 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asad Iqbal's Portfolio Starfield</title>
+    <title>Asad Iqbal's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-       body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    background-color: #1a1a2e; /* Dark navy blue for a modern feel */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional font */
-    color: #e0e0e0; /* Light gray for readable text */
-}
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-.content {
-    position: relative;
-    z-index: 1;
-    padding: 20px;
-    max-width: 80%;
-    margin: auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    background: rgba(255, 255, 255, 0.05); /* Light background for contrast */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
-}
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --card-background: rgba(0, 0, 0, 0.7);
+        }
 
-.content.show {
-    opacity: 1;
-    transform: translateY(0);
-}
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            background-color: var(--background-color);
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-.starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            max-width: 800px;
+            margin: 20px auto;
+            background: var(--card-background);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
 
-.star {
-    position: absolute;
-    background-color: #fff;
-    border-radius: 50%;
-    filter: blur(0.5px);
-    animation: twinkle linear infinite;
-}
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-@keyframes twinkle {
-    0% {
-        opacity: 0;
-        transform: translate(0, 0);
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-100vw, 100vh);
-    }
-}
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
 
-header h1, header p {
-    text-align: center;
-    color: #00e0ff; /* Bright cyan for headers */
-    margin-bottom: 10px;
-}
+        .shape {
+            position: absolute;
+            opacity: 0.5;
+            animation: float 15s infinite ease-in-out;
+        }
 
-section h2 {
-    color: #00e0ff; /* Consistent bright cyan for section titles */
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,255,0.8) 0%, rgba(0,255,255,0) 70%);
+        }
 
-ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+        .cube {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 255, 0.3);
+            transform: rotate(45deg);
+        }
 
-ul li {
-    display: inline-block;
-    margin: 10px 15px;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    transition: transform 0.3s ease, font-weight 0.3s ease, background-color 0.3s ease;
-    background-color: #333; /* Dark background for items */
-}
+        .planet {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,0,255,0.3) 0%, rgba(255,0,255,0) 70%);
+            box-shadow: inset 10px -10px 20px rgba(0,0,0,0.5);
+        }
 
-ul li:hover {
-    transform: translateX(-10px);
-    font-weight: bold;
-    background-color: #444; /* Slightly lighter on hover */
-}
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(360deg);
+            }
+        }
 
-ul li a {
-    color: #00e0ff; /* Bright cyan for links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
 
-ul li a:hover {
-    color: #ffcc00; /* Soft yellow on hover */
-}
+        /* Rest of your existing CSS styles... */
+        
+        header h1 {
+            font-size: 3.5em;
+            color: var(--primary-color);
+            text-align: center;
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+        }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-    color: #cccccc;
-    padding: 10px;
-    border-top: 1px solid #333;
-}
+        header p {
+            font-size: 1.2em;
+            text-align: center;
+            color: var(--secondary-color);
+        }
 
-.email-link {
-    color: #00e0ff; /* Bright cyan for email link */
-    text-decoration: none;
-    font-weight: bold;
-}
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-.email-link:hover {
-    color: #ffcc00; /* Highlight on hover */
-}
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        ul li {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-color);
+        }
+
+        ul li:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .project-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--secondary-color);
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--secondary-color);
+        }
+
+        .project-item strong {
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
 
     </style>
 </head>
 <body>
     <div class="starfield" id="starfield"></div>
-    <div class="content" id="header-content">
+    <div class="content">
+        <!-- Your existing content... -->
         <header>
             <h1>Asad Iqbal</h1>
             <p>Enthusiastic Computer Science student passionate about web development and AI integration.</p>
-            <p>Contact: <a href="mailto:measad408@gmail.com" class="email-link">measad408@gmail.com</a> | <a href="https://github.com/Asad-Iqbal407" target="_blank">GitHub</a></p>
+            <div class="contact-info">
+                <a href="mailto:measad408@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/Asad-Iqbal407" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/asad-iqbal" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="tel:+923107241356"><i class="fas fa-phone"></i> +92 310 7241356</a>
+                <a href="https://wa.me/923107241356" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
         </header>
-    </div>
 
-    <div class="content" id="skills-content">
         <section id="skills">
             <h2>Skills</h2>
             <ul>
@@ -157,29 +244,34 @@ footer {
                 <li>Machine Learning</li>
             </ul>
         </section>
-    </div>
 
-    <div class="content" id="projects-content">
         <section id="projects">
             <h2>Projects</h2>
-            <ul>
-                <li><strong>Healthcare Website:</strong> Disease prediction using Flask and Firebase, integrating ML models.</li>
-                <li><strong>Personal Portfolio Website:</strong> Full-stack site with separate pages for education, career, skills, and certificates.</li>
-                <li><strong>E-commerce Platform:</strong> MERN stack-based site with user authentication and product management.</li>
-                <li><strong>AI Integration in Web Applications:</strong> Integrated AI models for predictive analytics and recommendations.</li>
-            </ul>
+            <div class="project-list">
+                <div class="project-item">
+                    <strong>Healthcare Website</strong>
+                    Disease prediction using Flask and Firebase, integrating ML models.
+                </div>
+                <div class="project-item">
+                    <strong>Personal Portfolio Website</strong>
+                    Full-stack site with separate pages for education, career, skills, and certificates.
+                </div>
+                <div class="project-item">
+                    <strong>E-commerce Platform</strong>
+                    MERN stack-based site with user authentication and product management.
+                </div>
+                <div class="project-item">
+                    <strong>AI Integration in Web Applications</strong>
+                    Integrated AI models for predictive analytics and recommendations.
+                </div>
+            </div>
         </section>
-    </div>
-
-    <div class="content" id="education-content">
         <section id="education">
             <h2>Education</h2>
-            <p>Bachelor of Science in Computer Science, July 2024</p>
+            <p><strong>Bachelor of Science in Computer Science</strong>, July 2024</p>
             <p>University of Gujrat Sub Campus Mandi Baha Uddin, Mandi Bahauddin, Punjab, Pakistan</p>
         </section>
-    </div>
 
-    <div class="content" id="certifications-content">
         <section id="certifications">
             <h2>Certifications</h2>
             <ul>
@@ -190,58 +282,61 @@ footer {
                 <li><a href="https://www.mygreatlearning.com/certificate/FPMZDTXL" target="_blank">Machine Learning Certification</a></li>
             </ul>
         </section>
+
+        <footer>
+            <p>&copy; 2024 Asad Iqbal. All rights reserved.</p>
+        </footer>
     </div>
 
-    <footer class="content" id="footer-content">
-        <p>&copy; 2024 Asad Iqbal. All rights reserved.</p>
-    </footer>
+    
 
     <script>
         function createStar() {
             const star = document.createElement('div');
             star.className = 'star';
-            
-            const size = Math.random() * 3 + 1;
+
+            const size = Math.random() * 5 + 2;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
-            
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-            
-            const duration = Math.random() * 15 + 5;
+
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+
+            const duration = Math.random() * 10 + 5;
             star.style.animationDuration = `${duration}s`;
-            
+
             const delay = Math.random() * 5;
             star.style.animationDelay = `${delay}s`;
-            
-            const brightness = Math.random();
-            star.style.opacity = brightness;
-            star.style.boxShadow = `0 0 ${size * 2}px rgba(255, 255, 255, ${brightness * 0.5})`;
-            
+
+            const hue = Math.random() * 60 + 180;
+            star.style.backgroundColor = `hsl(${hue}, 100%, 80%)`;
+
             return star;
         }
 
+        function createShape(type) {
+            const shape = document.createElement('div');
+            shape.classList.add('shape', type);
+            shape.style.left = `${Math.random() * 100}vw`;
+            shape.style.top = `${Math.random() * 100}vh`;
+            shape.style.animationDuration = `${15 + Math.random() * 10}s`;
+            shape.style.animationDelay = `${Math.random() * 5}s`;
+            return shape;
+        }
+
         const starfield = document.getElementById('starfield');
-        const starCount = 150;
+        const starCount = 200;
+        const shapeCount = 3;
 
         for (let i = 0; i < starCount; i++) {
             starfield.appendChild(createStar());
         }
 
-        // Scroll effects using Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                } else {
-                    entry.target.classList.remove('show');
-                }
-            });
-        });
-
-        // Target all elements with class 'content'
-        const contents = document.querySelectorAll('.content');
-        contents.forEach(content => observer.observe(content));
+        for (let i = 0; i < shapeCount; i++) {
+            starfield.appendChild(createShape('circle'));
+            starfield.appendChild(createShape('cube'));
+            starfield.appendChild(createShape('planet'));
+        }
     </script>
 </body>
 </html>
